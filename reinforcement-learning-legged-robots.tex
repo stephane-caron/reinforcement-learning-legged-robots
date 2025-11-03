@@ -117,7 +117,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{RL in robotics}
+\section*{A partial history of robot learning}
 
 \begin{frame}{2024: Bipedal locomotion}
     \vspace{1.5em}
@@ -230,14 +230,14 @@
         import gymnasium as gym
 
         with gym.make("CartPole-v1", render_mode="human") as env:
-            env.reset()
+            observation, _ = env.reset()
             action = env.action_space.sample()
             for step in range(1_000_000):
                 observation, reward, terminated, truncated, _ = env.step(action)
                 if terminated or truncated:
                     observation, _ = env.reset()
-                cart_position = observation[0]
-                action = 0 if cart_position > 0.0 else 1
+                position = observation[0]
+                action = 0 if position > 0.0 else 1
     \end{minted}
 \end{frame}
 

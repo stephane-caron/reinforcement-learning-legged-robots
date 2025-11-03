@@ -104,11 +104,11 @@
 
 \title{\href{https://www.master-mva.com/cours/robotics/}{Reinforcement learning for legged robots}}
 
-\author{Instructor: {St\'ephane Caron}}
+\author{{St\'ephane Caron}}
 
-\date{November 20, 2024}
+\date{\today}
 
-\institute{\href{https://www.inria.fr/en}{Inria}, \href{https://www.ens.psl.eu/en}{\'{E}cole normale sup\'{e}rieure}}
+\institute{D\'{e}partement d'informatique de l'ENS (\href{https://www.cnrs.fr}{CNRS}, \href{https://www.ens.psl.eu/en}{ENS-PSL}, \href{https://www.inria.fr/en}{Inria})}
 
 \begin{document}
 
@@ -247,8 +247,8 @@
     \begin{minted}{python}
         import gymnasium as gym
 
-        with gym.make("UpkieGroundVelocity-v1", frequency=200.0) as env:
-            env.reset()
+        with gym.make("Upkie-PyBullet-Pendulum", frequency=200.0) as env:
+            observation, _ = env.reset()
             action = env.action_space.sample()
             for step in range(1_000_000):
                 observation, reward, terminated, truncated, _ = env.step(action)
@@ -693,7 +693,7 @@
 \end{frame}
 
 \begin{frame}[standout]
-    Thank you for your attention!\footnote{\color{white} Thanks to Elliot Chane-Sane, Thomas Flayols, Nicolas Perrin-Gilbert, Philippe Sou\`{e}res and the 2023 class at MVA for feedback on previous versions of these slides.}
+    Thank you for your attention!\footnote{\color{white} Thanks to Elliot Chane-Sane, Thomas Flayols, Nicolas Perrin-Gilbert, Philippe Sou\`{e}res and the 2023-24 classes at MVA for feedback on previous versions of these slides.}
 \end{frame}
 
 \section*{Bibliography}

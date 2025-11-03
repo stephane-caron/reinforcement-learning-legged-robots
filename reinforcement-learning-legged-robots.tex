@@ -290,30 +290,55 @@
 \end{frame}
 
 \begin{frame}{Value functions}
-    State value functions $V(s)$:
-    \begin{itemize}
-        \item \textbf{On-policy:} expected return from a given policy: $V^\pi(s) = \mathbb{E}_{\tau \sim \pi}(R(\tau) | s_0 = s)$
-        \item \textbf{Optimal:} best return we can expect from a state: $V^*(s) = \max_\pi \mathbb{E}_{\tau \sim \pi}(R(\tau) | s_0 = s)$
-    \end{itemize}
-    There are also state-action value functions $Q(s, a)$.
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            The value $V(s) \in \mathbb{R}$ of a state $s$ is the expected return achieved when starting from $s$.
 
+            \begin{block}{On-policy value function}
+                Expected return from $s$ following a given policy: $$V^\pi(s) = \mathbb{E}_{\tau \sim \pi}(R(\tau) | s_0 = s)$$
+            \end{block}
+
+            \begin{block}{Optimal value function}
+                Best return we can expect from $s$: $$V^*(s) = \max_\pi \mathbb{E}_{\tau \sim \pi}(R(\tau) | s_0 = s)$$
+            \end{block}
+        \end{column}
+        \begin{column}{0.39\textwidth}
+            \begin{figure}
+                \includegraphics[width=0.8\columnwidth]{genfig/labyrinth.pdf}
+                \caption{
+                    Labyrinth with discrete NSEW actions. Orange: distance to
+                    the exit.
+                }
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Bellman equation}
     Value functions satisfy the Bellman equation:
     \begin{block}{Bellman equation}
+        For the on-policy value function, we have recursively:
+        \[
+            V^\pi(s) = \mathbb{E}_{a \sim \pi(\cdot | s), (r, s') \sim p(s' | s, a)}[r + \gamma V^\pi(s')]
+        \]
+        And similarly for the optimal value function:
         \[
             V^*(s) = \max_\pi \mathbb{E}_{a \sim \pi(\cdot | s), (r, s') \sim p(s' | s, a)}[r + \gamma V^*(s')]
         \]
     \end{block}
-    An optimal policy $\pi^*$ can be derived from an optimal value function $V^*$.
+    An optimal policy $\pi^*$ can thus be derived from an optimal value
+    function $V^*$.
 
-    Connections to optimal control (\emph{e.g.} differential dynamic programming) and $Q$-learning.
+    This gives rise to algorithms like \href{https://en.wikipedia.org/wiki/Q-learning}{$Q$-learning} that search for
+    optimal value functions.
 \end{frame}
 
 \begin{frame}{Components of an RL algorithm}
     A reinforcement-learning algorithm may include any of the following:
     \begin{itemize}
-        \item \textbf{Policy:} function approximator for the agent's behavior
-        \item \textbf{Value function:} function approximator for the value of states
-        \item \textbf{Model:} representation of the environment
+        \item \textbf{Policy:} compute the agent's action from an observation
+        \item \textbf{Value function:} estimate the policy/best return from a state
+        \item \textbf{Model:} an internal function approximating the (unknown) environment dynamics
     \end{itemize}
     An algorithm with a policy (actor) and a value function (critic) is called \emph{actor-critic}.
 
@@ -323,19 +348,19 @@
 \begin{frame}{A taxonomy of RL algorithms}
     \begin{figure}
         \includegraphics[height=6cm]{figures/taxonomy.png}
-    \end{figure}
-    \blfootnote{
-        There are several taxonomies, none of them fully works. This one is from~\cite{spinningup}.
+        \caption{
+            There are several taxonomies, none of them fully works. This one is from~\cite{spinningup}.
     }
+    \end{figure}
 \end{frame}
 
 \begin{frame}{A taxonomy of RL algorithms}
     \begin{figure}
         \includegraphics[height=6cm]{figures/taxonomy-focus.png}
+        \caption{
+            We will focus on this branch in what follows.
+        }
     \end{figure}
-    \blfootnote{
-        Our focus in what follows.
-    }
 \end{frame}
 
 \section{Policy optimization}

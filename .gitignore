@@ -17,5 +17,5 @@
 .ipynb_checkpoints
 _minted*
 genfig/*.pdf
-slides.pdf
+reinforcement-learning-legged-robots.pdf
 videos/

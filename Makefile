@@ -4,7 +4,7 @@ LATEX=xelatex -interaction nonstopmode -halt-on-error -file-line-error -shell-es
 READER=zathura
 SHELL=/bin/zsh
 
-SRC=slides.tex
+SRC=$(wildcard *.tex)
 PDF=$(SRC:.tex=.pdf)
 TMP=$(wildcard *.aux *.bbl *.bcf *.blg *.dvi *.log *.nav *.out *.ps *.fls *.listing *.glo *.idx *.run.xml *.snm *.tns *.toc *.vrb)
 SVG=$(wildcard figures/*.svg)

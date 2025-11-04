@@ -3,6 +3,13 @@
 
 \RequirePackage{caption}
 
+\usetheme[progressbar=frametitle]{metropolis}
+\metroset{titleformat frame=allsmallcaps}
+\metroset{block=fill}
+\metroset{sectionpage=progressbar}
+\usefonttheme{professionalfonts}
+\setmonofont{FiraMono-Regular.otf}  % https://tex.stackexchange.com/q/545073
+
 % Constants
 \definecolor{cAlertRed}{RGB}{237, 28, 36}
 \definecolor{cDarkGold}{RGB}{224, 165, 0}
@@ -45,3 +52,41 @@
 \makeatother
 
 \newcommand{\highlight}[1]{{\color{cInriaOrange} \textbf{#1}}}
+
+\setbeamertemplate{frame footer}{\insertshorttitle}
+\setbeamerfont{page number in head/foot}{size=\tiny}
+\setbeamercolor{footline}{fg=gray}
+
+% Bibliography
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\setbeamerfont{bibliography entry author}{size=\footnotesize}
+\setbeamerfont{bibliography entry title}{size=\footnotesize}
+\setbeamerfont{bibliography entry location}{size=\footnotesize}
+\setbeamerfont{bibliography entry note}{size=\footnotesize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Syntax highlighting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{minted}
+
+\definecolor{codebg}{rgb}{0.95, 0.955, 0.96}
+
+\setminted[bash]{
+    autogobble,
+    bgcolor=codebg,
+    fontsize=\footnotesize,
+    framesep=50mm,
+    xleftmargin=1em,
+    xrightmargin=1em,
+}
+
+\setminted[python]{
+    autogobble,
+    bgcolor=codebg,
+    fontsize=\footnotesize,
+    framesep=50mm,
+    xleftmargin=0.5em,
+    xrightmargin=0.5em,
+}

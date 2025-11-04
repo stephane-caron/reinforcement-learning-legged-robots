@@ -7,93 +7,31 @@
 \usepackage{color}
 \usepackage{csquotes}
 \usepackage{fontspec}
+\usepackage[style=alphabetic]{biblatex}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Metropolis theme
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usetheme[progressbar=frametitle]{metropolis}
-\metroset{titleformat frame=allsmallcaps}
-\metroset{block=fill}
-\metroset{sectionpage=progressbar}
-\usefonttheme{professionalfonts}
+% Metropolis theme with Inria color scheme
 \usepackage{theme/beamercolorthememetropolisinria}
 
-\setbeamertemplate{frame footer}{\insertshorttitle}
-\setbeamerfont{page number in head/foot}{size=\tiny}
-\setbeamercolor{footline}{fg=gray}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Syntax highlighting
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{minted}
-\definecolor{codebg}{rgb}{0.95, 0.955, 0.96}
-
-\setminted[bash]{
-    autogobble,
-    bgcolor=codebg,
-    fontsize=\footnotesize,
-    framesep=50mm,
-    xleftmargin=1em,
-    xrightmargin=1em,
-}
-
-\setminted[python]{
-    autogobble,
-    bgcolor=codebg,
-    fontsize=\footnotesize,
-    framesep=50mm,
-    xleftmargin=0.5em,
-    xrightmargin=0.5em,
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage[
-    style=alphabetic,
-    maxbibnames=99,
-    maxcitenames=99,
-]{biblatex}
-
 \addbibresource{bibliography.bib}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Footnotes
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand\blfootcite[1]{%
-    \invisible<1>{%
-        {\color{white} \footfullcite{#1}}%
-    }%
-}
-
-\newcommand\blfootcitetext[1]{%
-    \invisible<1>{%
-        \addtocounter{footnote}{-1}% assumes a footnotemark
-        {\color{white} \footfullcite{#1}}%
-    }%
-}
-
+% Slide footnote
 \newcommand\blfootnote[1]{%
-  \begingroup
+  \begingroup%
   \renewcommand\thefootnote{}%
   \footnote{#1}%
   \addtocounter{footnote}{-1}%
   \endgroup
 }
 
-\newcommand\blfootnotetext[1]{%
-  \begingroup
-  \footnotetext{#1}%
-  \endgroup
+% Citation in slide footnote
+\newcommand\blfootcite[1]{%
+    \invisible<1>{%
+        \textcolor{white}{\footfullcite{#1}}%
+    }%
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Metadata
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{\textsc{Reinforcement learning for legged robots}}
 
@@ -734,7 +672,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{Bibliography}
+\metroset{background=dark}
+\section{\textsc{Bibliography}}
+\metroset{background=light}
 
 \renewcommand*{\bibfont}{\footnotesize}
 \setbeamertemplate{bibliography item}{\insertbiblabel}

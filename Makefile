@@ -15,22 +15,38 @@ all: genfig $(GENFIG) $(SRC)
 	$(LATEX) $(SRC)
 	$(BIBTEX) $(SRC:.tex=)
 
+clean:
+	-@rm -f $(PDF) $(TMP)
+	-@rm -rf genfig/
+
 genfig:
 	mkdir -p genfig
 
 genfig/%.pdf: figures/%.svg
 	$(INKSCAPE) -C -z --file=$< --export-pdf=$@
 
-clean:
-	-@rm -f $(PDF) $(TMP)
-	-@rm -rf genfig/
+install-fonts:
+	mkdir -p ~/.local/share/fonts/fira
+	(cd ~/.local/share/fonts/fira && \
+		wget https://github.com/mozilla/Fira/raw/master/otf/FiraMono-Bold.otf && \
+		wget https://github.com/mozilla/Fira/raw/master/otf/FiraMono-Medium.otf && \
+		wget https://github.com/mozilla/Fira/raw/master/otf/FiraMono-Regular.otf && \
+		wget https://github.com/mozilla/Fira/raw/master/otf/FiraSans-Bold.otf && \
+		wget https://github.com/mozilla/Fira/raw/master/otf/FiraSans-BoldItalic.otf && \
+		wget https://github.com/mozilla/Fira/raw/master/otf/FiraSans-Italic.otf && \
+		wget https://github.com/mozilla/Fira/raw/master/otf/FiraSans-Light.otf && \
+		wget https://github.com/mozilla/Fira/raw/master/otf/FiraSans-LightItalic.otf && \
+		wget https://github.com/mozilla/Fira/raw/master/otf/FiraSans-Regular.otf && \
+		wget https://github.com/mozilla/Fira/raw/master/otf/FiraSans-SemiBold.otf && \
+		wget https://github.com/mozilla/Fira/raw/master/otf/FiraSans-SemiBoldItalic.otf)
+	fc-cache -fv
+
+install-ubuntu: install-fonts
+	sudo apt install texlive-xetex texlive-fonts-extra texlive-bibtex-extra biber
+	sudo apt install texlive-latex-extra  # has metropolis beamer theme
 
 open:
 	$(READER) $(PDF) &
-
-install-ubuntu:
-	sudo apt install texlive-xetex texlive-fonts-extra texlive-bibtex-extra biber
-	sudo apt install texlive-latex-extra  # has metropolis beamer theme
 
 watch:
 	while [ 1 ]; do; inotifywait $(SRC) $(SVG) && make; done

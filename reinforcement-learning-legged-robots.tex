@@ -9,10 +9,11 @@
 \usepackage{fontspec}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Theme
+% Metropolis theme
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usetheme[progressbar=frametitle]{metropolis}
+\metroset{titleformat frame=allsmallcaps}
 \metroset{block=fill}
 \metroset{sectionpage=progressbar}
 \usefonttheme{professionalfonts}
@@ -103,9 +104,9 @@
 % Metadata
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{\href{https://www.master-mva.com/cours/robotics/}{Reinforcement learning for legged robots}}
+\title{\textsc{Reinforcement learning for legged robots}}
 
-\author{{St\'ephane Caron}}
+\author{{St\'{e}phane Caron}}
 
 \date{\today}
 
@@ -117,7 +118,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{A partial history of robot learning}
+\metroset{background=dark}
+\section{\textsc{Quick history of robot learning}}
+\metroset{background=light}
 
 \begin{frame}{2024: Bipedal locomotion}
     \vspace{1.5em}
@@ -176,7 +179,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{Basics of reinforcement learning}
+\metroset{background=dark}
+\section{\textsc{Intro to reinforcement learning}}
+\metroset{background=light}
 
 \begin{frame}{Scope}
     \begin{figure}
@@ -363,7 +368,11 @@
     \end{figure}
 \end{frame}
 
-\section{Policy optimization}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\metroset{background=dark}
+\section{\textsc{Policy optimization}}
+\metroset{background=light}
 
 \begin{frame}{Parameterized policy}
     We parameterize our policy $\pi_\theta$ by a vector $\theta \in \mathbb{R}^n$.
@@ -555,7 +564,11 @@
     \end{figure}
 \end{frame}
 
-\section{Application to robotics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\metroset{background=dark}
+\section{\textsc{Application to robotics}}
+\metroset{background=light}
 
 \begin{frame}{Sim-to-real gap}
     \begin{figure}
@@ -700,9 +713,13 @@
     \end{figure}
 \end{frame}
 
-\section{What did we see?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{What we saw}
+\metroset{background=dark}
+\section{\textsc{What did we see?}}
+\metroset{background=light}
+
+\begin{frame}{We saw}
     Introduction to policy optimization:
     \begin{itemize}
         \item Partially-observable Markov decision process (POMDP)
@@ -718,9 +735,13 @@
     RL is not magic: great results, possibly going to great lengths!
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}[standout]
-    Thank you for your attention!\footnote{\color{white} Thanks to Elliot Chane-Sane, Thomas Flayols, Nicolas Perrin-Gilbert, Rohan P. Singh, Philippe Sou\`{e}res and the 2023-2024 MVA classes for feedback on previous versions of these slides.}
+    \textsc{Thank you for your attention!}\footnote{\color{white} Thanks to Elliot Chane-Sane, Thomas Flayols, Nicolas Perrin-Gilbert, Rohan P. Singh, Philippe Sou\`{e}res and the 2023-2024 MVA classes for feedback on previous versions of these slides.}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Bibliography}
 
@@ -730,7 +751,9 @@
     \printbibliography[heading=none]
 \end{frame}
 
-\section{Bonus slides on PPO}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{\textsc{Bonus slides on PPO}}
 
 % \begin{frame}{Link between discount and time window}
 %     Context:

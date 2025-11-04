@@ -12,5 +12,5 @@ This is a crash course on applying reinforcement learning to train policies that
 This lecture has been given in the following classes:
 
 - *Robotics* at [MVA](https://www.master-mva.com/cours/robotics/) (Fall 2023, Fall 2024)
-- *Introduction to Robotics* (part 2) at Mines de Paris (Fall 2023, Fall 2024)
+- *Introduction to Robotics* (part 2) at Mines de Paris (Fall 2023, Fall 2024, Fall 2025)
 - *Planification de mouvement en robotique et en animation graphique* at [ENS Paris](https://www.ens.psl.eu/) (Fall 2023, Fall 2024)

@@ -134,6 +134,7 @@
     \begin{itemize}
         \item \textbf{State:} $s_t$, ground truth of the environment
         \item \textbf{Action:} $a_t$, decision of the agent (discrete or continuous)
+        \item \textbf{Transitions:} only depend on current state and action (Markov property)
         \item \textbf{Observation:} $o_t$, \emph{partial} estimation of the state from sensors
         \item \textbf{Reward:} $r_t \in \mathbb{R}$, scalar feedback, often $r_t = r(s_t, a_t)$ or $r(s_t, a_t, s_{t+1})$
     \end{itemize}
@@ -148,7 +149,7 @@
         \begin{tabular}{rlll}
             & \emph{Deterministic} & \emph{Stochastic} \\
             \hline
-            \textbf{Model:} & $s_{t+1} = f(s_t, a_t)$ & $s_{t+1} \sim p(\cdot | s_t, a_t)$ & how the environment evolves \\
+            \textbf{Transitions:} & $s_{t+1} = f(s_t, a_t)$ & $s_{t+1} \sim p(\cdot | s_t, a_t)$ & how the environment evolves \\
             \textbf{Initial state:} & $s_0$ & $s_0 \sim \rho_0(\cdot)$ & where we start from \\
             \textbf{Observation:} & $o_t = h(s_t)$ & $o_t \sim z(\cdot | s_t)$ & how sensors measure the world \\  % brain cycle
             \textbf{Policy:} & $a_t = g(s_t)$ & $a_t \sim \pi(\cdot | o_t)$ & what the agent decides

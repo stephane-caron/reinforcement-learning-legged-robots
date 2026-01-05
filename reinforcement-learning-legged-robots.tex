@@ -158,12 +158,21 @@
 \end{frame}
 
 \begin{frame}[fragile]{Example: The Gymnasium API}
-    \begin{figure}
-        \includegraphics[height=2.5cm]{figures/cart-pole.png}
-    \end{figure}
+    \begin{columns}
+        \begin{column}{0.49\textwidth}
+            Gymnasium is a standard API for reinforcement learning:
+            \begin{minted}{python}
+                import gymnasium as gym
+            \end{minted}
+            It comes with reference environments:
+        \end{column}
+        \begin{column}{0.49\textwidth}
+            \begin{figure}
+                \includegraphics[height=2.5cm]{figures/cart-pole.png}
+            \end{figure}
+        \end{column}
+    \end{columns}
     \begin{minted}{python}
-        import gymnasium as gym
-
         with gym.make("CartPole-v1", render_mode="human") as env:
             observation, _ = env.reset()
             action = env.action_space.sample()
@@ -177,12 +186,23 @@
 \end{frame}
 
 \begin{frame}[fragile]{Same API for simulation and real robots}
-    \begin{figure}
-        \includegraphics[height=2.5cm]{figures/upkie-sim-real.png}
-    \end{figure}
-    \begin{minted}{python}
-        import gymnasium as gym
+    \begin{columns}
+        \begin{column}{0.49\textwidth}
+            Robots can provide environments as well:
+            \begin{minted}{python}
+                import gymnasium as gym
+                import upkie
 
+                upkie.envs.register()
+            \end{minted}
+        \end{column}
+        \begin{column}{0.49\textwidth}
+            \begin{figure}
+                \includegraphics[height=2.5cm]{figures/upkie-sim-real.png}
+            \end{figure}
+        \end{column}
+    \end{columns}
+    \begin{minted}{python}
         with gym.make("Upkie-PyBullet-Pendulum", frequency=200.0) as env:
             observation, _ = env.reset()
             action = env.action_space.sample()

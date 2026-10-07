@@ -13,7 +13,8 @@
 % Constants (section backgrounds use metropolis' mDarkTeal/mLightTeal)
 \definecolor{cAlertRed}{RGB}{237, 28, 36}
 \definecolor{cDarkGold}{RGB}{224, 165, 0}
-\definecolor{cPrimary}{HTML}{1f6feb}
+\definecolor{cPrimary}{HTML}{1e4697}
+\definecolor{cPrimaryDark}{HTML}{14305f}
 \definecolor{cAccent}{HTML}{e8722a}
 \definecolor{cDarkRed}{HTML}{5c3333}
 \newcommand{\progressbar}{1pt}
@@ -39,6 +40,13 @@
   use=palette primary,
   parent=palette primary
 }
+
+% Progress bars: metropolis derives them from "alerted text" (red here),
+% so give them their own (darker) blue.
+\setbeamercolor{progress bar}{fg=cPrimaryDark, bg=cPrimaryDark!30!black}
+\setbeamercolor{title separator}{fg=cPrimaryDark, bg=cPrimaryDark!30!black}
+\setbeamercolor{progress bar in head/foot}{fg=cPrimaryDark, bg=cPrimaryDark!30!black}
+\setbeamercolor{progress bar in section page}{fg=cPrimaryDark, bg=cPrimaryDark!30!black}
 
 % The following commands fix theme switches
 % See https://tex.stackexchange.com/a/329454

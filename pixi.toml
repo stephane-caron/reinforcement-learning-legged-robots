@@ -19,7 +19,7 @@ curl = "*"
 cmd = "rm -f reinforcement-learning-legged-robots.pdf && rm -rf output"
 description = "Remove build artifacts"
 
-[tasks.genfig]
+[tasks.generate-figures]
 cmd = "bash scripts/make-slides.sh --genfig-only"
 description = "Convert figures/*.svg to figures/*.pdf"
 

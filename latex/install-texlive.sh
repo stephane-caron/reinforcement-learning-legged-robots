@@ -4,7 +4,7 @@
 #
 # conda-forge only ships TeX Live binaries (no LaTeX packages), so we install a
 # real (minimal) TeX Live, kept outside the project tree (see
-# scripts/texlive-dir.sh for the location and the reason). This is idempotent:
+# latex/texlive-dir.sh for the location and the reason). This is idempotent:
 # it only downloads on the first run or when the package list below changes.
 #
 # The TeX Live version can be pinned by exporting TL_REPO, e.g. to a frozen
@@ -79,8 +79,8 @@ fi
 
 # The metropolis beamer theme loads Fira fonts by *family name* through
 # fontconfig. Make the OTFs from the TeX Live "fira" package visible to the
-# fontconfig of the pixi environment (scripts/make-slides.sh points xelatex
-# at this configuration via FONTCONFIG_FILE).
+# fontconfig of the pixi environment (the Makefile points xelatex at this
+# configuration via FONTCONFIG_FILE).
 FONT_SRC="$TL_DIR/texmf-dist/fonts/opentype/public/fira"
 FONT_DST="$CONDA_PREFIX/share/fonts"
 shopt -s nullglob

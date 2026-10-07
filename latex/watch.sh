@@ -8,7 +8,7 @@ set -uo pipefail
 ROOT="${PIXI_PROJECT_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
 
 checksum() {
-    cat "$ROOT/$SRC.tex" "$ROOT"/theme/*.sty "$ROOT"/figures/*.svg 2>/dev/null | md5sum | cut -d' ' -f1
+    cat "$ROOT/$SRC.tex" "$ROOT"/theme/*.sty "$ROOT"/refs.bib "$ROOT"/figures/*.svg 2>/dev/null | md5sum | cut -d' ' -f1
 }
 
 SRC="slides"
@@ -20,7 +20,7 @@ while true; do
     if [ "$cur" != "$last" ]; then
         last="$cur"
         echo "==> change detected, rebuilding..."
-        if bash "$ROOT/scripts/make-slides.sh"; then
+        if make -C "$ROOT"; then
             echo "==> rebuilt at $(date +%H:%M:%S)"
         else
             echo "==> build failed, waiting for the next change"

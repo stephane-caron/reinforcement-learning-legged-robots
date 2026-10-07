@@ -14,17 +14,18 @@ librsvg = "*"         # rsvg-convert: converts figures/*.svg to PDF
 fontconfig = "*"
 font-ttf-dejavu = "*" # generic sans/mono fallbacks for text in SVG figures
 curl = "*"
+make = "*"            # GNU Make builds the slides (see Makefile)
 
 [tasks.clean]
-cmd = "rm -f reinforcement-learning-legged-robots.pdf && rm -rf output"
+cmd = "make clean"
 description = "Remove build artifacts"
 
 [tasks.generate-figures]
-cmd = "bash scripts/make-slides.sh --genfig-only"
+cmd = "make genfig"
 description = "Convert figures/*.svg to figures/*.pdf"
 
 [tasks.slides-make]
-cmd = "bash scripts/make-slides.sh"
+cmd = "make"
 depends-on = ["texlive-install"]
 description = "Build reinforcement-learning-legged-robots.pdf"
 
@@ -34,14 +35,14 @@ depends-on = ["slides-make"]
 description = "Open the slides in your PDF viewer"
 
 [tasks.slides-watch]
-cmd = "bash scripts/watch.sh"
+cmd = "bash latex/watch.sh"
 depends-on = ["texlive-install"]
 description = "Rebuild the slides whenever sources change"
 
 [tasks.texlive-install]
-cmd = "bash scripts/install-texlive.sh"
+cmd = "bash latex/install-texlive.sh"
 description = "Bootstrap the project-scoped TeX Live (one-time, ~250 MB, under ~/.local/share/texlive-projects/)"
 
 [tasks.texlive-uninstall]
-cmd = "bash scripts/uninstall-texlive.sh"
+cmd = "bash latex/uninstall-texlive.sh"
 description = "Remove the project-scoped TeX Live installation"

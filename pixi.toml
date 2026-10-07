@@ -28,7 +28,6 @@ description = "Build reinforcement-learning-legged-robots.pdf"
 
 [tasks.open]
 cmd = "xdg-open reinforcement-learning-legged-robots.pdf"
-depends-on = ["make"]
 description = "Open the slides in your PDF viewer"
 
 [tasks.texlive-install]

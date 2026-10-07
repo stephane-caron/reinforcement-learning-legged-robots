@@ -98,7 +98,7 @@
 \begin{frame}{1997: Pendulum swing up}
     \vspace{1.5em}
     \begin{figure}
-        \includegraphics[height=3.5cm]{genfig/1997-atkeson-demo.pdf}
+        \includegraphics[height=3.5cm]{output/genfig/1997-atkeson-demo.pdf}
     \end{figure}
     \begin{center}
         Swinging up an inverted pendulum from human demonstrations~\cite{atkeson1997}
@@ -114,7 +114,7 @@
 
 \begin{frame}{Scope}
     \begin{figure}
-        \includegraphics[height=4.5cm]{genfig/agent-environment.pdf}
+        \includegraphics[height=4.5cm]{output/genfig/agent-environment.pdf}
     \end{figure}
 \end{frame}
 
@@ -129,7 +129,7 @@
 
 \begin{frame}{Partially observable Markov decision process (1/2)}
     \begin{figure}
-        \includegraphics[height=3.5cm]{genfig/pomdp1.pdf}
+        \includegraphics[height=3.5cm]{output/genfig/pomdp1.pdf}
     \end{figure}
     \begin{itemize}
         \item \textbf{State:} $s_t$, ground truth of the environment
@@ -143,7 +143,7 @@
 
 \begin{frame}{Partially observable Markov decision process (2/2)}
     \begin{figure}
-        \includegraphics[height=4.5cm]{genfig/pomdp2.pdf}
+        \includegraphics[height=4.5cm]{output/genfig/pomdp2.pdf}
     \end{figure}
     \begin{table}
         \begin{tabular}{rlll}
@@ -259,7 +259,7 @@
         \end{column}
         \begin{column}{0.39\textwidth}
             \begin{figure}
-                \includegraphics[width=0.8\columnwidth]{genfig/labyrinth.pdf}
+                \includegraphics[width=0.8\columnwidth]{output/genfig/labyrinth.pdf}
                 \caption{
                     Labyrinth with discrete NSEW actions. Orange: distance to
                     the exit.
@@ -345,7 +345,7 @@
         \end{column}
         \begin{column}{0.44\textwidth}
             \begin{figure}
-                \includegraphics[height=5cm]{genfig/training.pdf}
+                \includegraphics[height=5cm]{output/genfig/training.pdf}
             \end{figure}
         \end{column}
     \end{columns}
@@ -482,7 +482,7 @@
 
 \begin{frame}{Training with PPO}
     \begin{figure}
-        \includegraphics[height=6.5cm]{genfig/training-ppo.pdf}
+        \includegraphics[height=6.5cm]{output/genfig/training-ppo.pdf}
     \end{figure}
 \end{frame}
 
@@ -498,7 +498,7 @@
 
 \begin{frame}{Curriculum}
     \begin{figure}
-        \includegraphics[height=6.5cm]{genfig/training-curriculum.pdf}
+        \includegraphics[height=6.5cm]{output/genfig/training-curriculum.pdf}
     \end{figure}
 \end{frame}
 
@@ -510,7 +510,7 @@
         \item \mintinline{python}{batch_size}: mini-batch size, same as in stochastic gradient descent.
     \end{itemize}
     \begin{figure}
-        \includegraphics[height=12em]{genfig/learning-rate.pdf}
+        \includegraphics[height=12em]{output/genfig/learning-rate.pdf}
     \end{figure}
 \end{frame}
 
@@ -522,7 +522,7 @@
 
 \begin{frame}{Sim-to-real gap}
     \begin{figure}
-        \includegraphics[height=15em]{genfig/sim2real.pdf}
+        \includegraphics[height=15em]{output/genfig/sim2real.pdf}
         \caption{The ``sim-to-real gap'' is a metaphor for model mismatch.}
     \end{figure}
 \end{frame}
@@ -618,7 +618,7 @@
 
     Example: terrain curriculum for quadrupedal locomotion~\cite{lee2020}:
     \begin{figure}
-        \includegraphics[height=15em]{genfig/curriculum.pdf}
+        \includegraphics[height=15em]{output/genfig/curriculum.pdf}
     \end{figure}
 \end{frame}
 
@@ -654,8 +654,8 @@
 \begin{frame}{Keep in mind that we are in a stochastic world}
     \begin{figure}
         \centering
-        \only<1>{\includegraphics[height=5cm]{genfig/max-accel.pdf}}
-        \only<2>{\includegraphics[height=5cm]{genfig/max-accel-bis.pdf}}
+        \only<1>{\includegraphics[height=5cm]{output/genfig/max-accel.pdf}}
+        \only<2>{\includegraphics[height=5cm]{output/genfig/max-accel-bis.pdf}}
         \caption{
             \only<1>{We may be observing the effect of our parameter.}
             \only<2>{Or we may be observing the variance of the training process.}

@@ -16,12 +16,12 @@ font-ttf-dejavu = "*" # generic sans/mono fallbacks for text in SVG figures
 curl = "*"
 
 [tasks.clean]
-cmd = "rm -f reinforcement-learning-legged-robots.pdf reinforcement-learning-legged-robots.{aux,bbl,bcf,blg,log,nav,out,run.xml,snm,toc,vrb} && rm -rf _minted genfig"
+cmd = "rm -f reinforcement-learning-legged-robots.pdf && rm -rf output"
 description = "Remove build artifacts"
 
 [tasks.genfig]
 cmd = "bash scripts/make-slides.sh --genfig-only"
-description = "Convert figures/*.svg to genfig/*.pdf"
+description = "Convert figures/*.svg to output/genfig/*.pdf"
 
 [tasks.slides]
 cmd = "bash scripts/make-slides.sh"

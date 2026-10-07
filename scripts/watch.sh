@@ -11,7 +11,7 @@ checksum() {
     cat "$ROOT/$SRC.tex" "$ROOT"/theme/*.sty "$ROOT"/figures/*.svg 2>/dev/null | md5sum | cut -d' ' -f1
 }
 
-SRC="reinforcement-learning-legged-robots"
+SRC="slides"
 last=""
 
 echo "==> watching for changes (Ctrl-C to stop)"

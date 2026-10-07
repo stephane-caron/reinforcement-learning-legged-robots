@@ -1,36 +1,36 @@
 #!/usr/bin/env bash
-#
-# Build the slides: SVG figures -> PDF, then xelatex -> biber -> xelatex.
-
+# Build the slides: SVG figures -> output/genfig/*.pdf, then
+# xelatex -> biber -> xelatex, all by-products in output/. The final PDF is
+# copied to ./reinforcement-learning-legged-robots.pdf.
 set -euo pipefail
 
 ROOT="${PIXI_PROJECT_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
 CONDA_PREFIX="${CONDA_PREFIX:-$ROOT/.pixi/envs/default}"
-
 source "$(dirname "$0")/texlive-dir.sh"
 TL_BINDIR="$TL_DIR/bin/x86_64-linux"
-SRC="reinforcement-learning-legged-robots"
+SRC="slides"
+OUT="$ROOT/output"
+PDF="$ROOT/reinforcement-learning-legged-robots.pdf"
 
 if [ ! -x "$TL_BINDIR/xelatex" ]; then
-    echo "error: no TeX Live in $TL_DIR, run: pixi run tex" >&2
+    echo "error: no TeX Live in $TL_DIR, run: pixi run texlive-install" >&2
     exit 1
 fi
 
-# Convert SVG figures to PDF
-generate_figures() {
-    mkdir -p "$ROOT/genfig"
+genfig() {
+    mkdir -p "$OUT/genfig"
     for svg in "$ROOT"/figures/*.svg; do
-        out="$ROOT/genfig/$(basename "${svg%.svg}").pdf"
+        out="$OUT/genfig/$(basename "${svg%.svg}").pdf"
         rsvg-convert -f pdf -o "$out" "$svg"
     done
 }
 
 if [ "${1:-}" = "--genfig-only" ]; then
-    generate_figures
+    genfig
     exit 0
 fi
 
-generate_figures
+genfig
 
 export PATH="$TL_BINDIR:$PATH"
 
@@ -45,15 +45,16 @@ export LC_ALL="${LC_ALL:-C.UTF-8}" LANG="${LANG:-C.UTF-8}"
 export FONTCONFIG_FILE="${FONTCONFIG_FILE:-$CONDA_PREFIX/etc/fonts/fonts.conf}"
 export OSFONTDIR="$TL_DIR/texmf-dist/fonts/opentype/public/fira:$CONDA_PREFIX/share/fonts"
 
-flags=(-interaction=nonstopmode -halt-on-error -file-line-error -shell-escape)
-cd "$ROOT"
+mkdir -p "$OUT"
+flags=(-interaction=nonstopmode -halt-on-error -file-line-error -shell-escape -output-directory="$OUT")
 xelatex "${flags[@]}" "$SRC.tex"
-biber "$SRC"
+biber "$OUT/$SRC"
 xelatex "${flags[@]}" "$SRC.tex"
 xelatex "${flags[@]}" "$SRC.tex"
 
-if grep -q "Citation.*undefined" "$SRC.log"; then
-    echo "warning: undefined citations remain, check $SRC.log" >&2
+if grep -q "Citation.*undefined" "$OUT/$SRC.log"; then
+    echo "warning: undefined citations remain, check $OUT/$SRC.log" >&2
 fi
 
-echo "==> Built $SRC.pdf"
+cp "$OUT/$SRC.pdf" "$PDF"
+echo "==> Built $PDF"

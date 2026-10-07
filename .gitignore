@@ -15,6 +15,7 @@
 *.toc
 *.vrb
 .ipynb_checkpoints
+.pixi/
 _minted*
 genfig/*.pdf
 reinforcement-learning-legged-robots.pdf

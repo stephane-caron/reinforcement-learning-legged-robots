@@ -6,8 +6,13 @@ This is a crash course on applying reinforcement learning to train policies that
 
 ## Usage
 
-- Build slides: ``make``
-- Rebuild slides on source updates: ``make watch``
+The slides can be built with [pixi](https://pixi.sh):
+
+- Build slides: `pixi run slides`
+- Rebuild slides on source updates: `pixi run watch`
+- Open the slides: `pixi run view`
+
+Run `pixi task list` to list all available tasks. The first build will bootstrap a TeX Live build environment, with a minimal distribution installed by default to `~/.local/share/texlive-projects/`.
 
 ## History
 

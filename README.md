@@ -18,6 +18,6 @@ Run `pixi task list` to list all available tasks. The first build will bootstrap
 
 This lecture has been given in the following classes:
 
-- *Robotics* at [MVA](https://www.master-mva.com/cours/robotics/) (Fall 2023, Fall 2024, Fall 2025)
-- *Introduction to Robotics* (part 2) at Mines de Paris (Fall 2023, Fall 2024, Fall 2025)
-- *Planification de mouvement en robotique et en animation graphique* at [ENS Paris](https://www.ens.psl.eu/) (Fall 2023, Fall 2024, Fall 2025)
+- *MAREVA option* at [Mines de Paris](https://www.minesparis.psl.eu/) (2023-2026)
+- *Robotics* at [Master MVA](https://www.master-mva.com/cours/robotics/) (2023-2025)
+- *Planification de mouvement en robotique et en animation graphique* at [ENS](https://www.ens.psl.eu/) (2023-2025)

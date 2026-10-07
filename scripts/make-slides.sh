@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Build the slides: SVG figures -> output/genfig/*.pdf, then
-# xelatex -> biber -> xelatex, all by-products in output/. The final PDF is
-# copied to ./reinforcement-learning-legged-robots.pdf.
+# Build the slides: SVG figures -> figures/*.pdf (alongside their sources),
+# then xelatex -> biber -> xelatex, all by-products in output/. The final PDF
+# is copied to ./reinforcement-learning-legged-robots.pdf.
 set -euo pipefail
 
 ROOT="${PIXI_PROJECT_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
@@ -18,9 +18,8 @@ if [ ! -x "$TL_BINDIR/xelatex" ]; then
 fi
 
 genfig() {
-    mkdir -p "$OUT/genfig"
     for svg in "$ROOT"/figures/*.svg; do
-        out="$OUT/genfig/$(basename "${svg%.svg}").pdf"
+        out="${svg%.svg}.pdf"
         rsvg-convert -f pdf -o "$out" "$svg"
     done
 }

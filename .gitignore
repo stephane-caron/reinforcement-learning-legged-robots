@@ -1,3 +1,4 @@
 /.pixi/
+/figures/*.pdf
 /output/
 /reinforcement-learning-legged-robots.pdf

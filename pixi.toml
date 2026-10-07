@@ -21,7 +21,7 @@ description = "Remove build artifacts"
 
 [tasks.genfig]
 cmd = "bash scripts/make-slides.sh --genfig-only"
-description = "Convert figures/*.svg to output/genfig/*.pdf"
+description = "Convert figures/*.svg to figures/*.pdf"
 
 [tasks.slides]
 cmd = "bash scripts/make-slides.sh"

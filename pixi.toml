@@ -7,14 +7,15 @@ platforms = ["linux-64"]
 # Python < 3.14: the latexminted helper shipped with TeX Live (required by
 # minted v3) is incompatible with the argparse changes of Python 3.14.
 python = "<3.14"
+curl = "*"
+font-ttf-dejavu = "*" # generic sans/mono fallbacks for text in SVG figures
+fontconfig = "*"
+inotify-tools = "*"   # inotifywait: rebuild slides on source changes (slides-watch)
+librsvg = "*"         # rsvg-convert: converts figures/*.svg to PDF
+make = "*"            # GNU Make builds the slides (see Makefile)
+perl = "*"            # install-tl / tlmgr / TeX Live helper scripts
 pygments = "*"        # runtime dependency of latexminted
 pylatexenc = "*"      # runtime dependency of latexminted
-perl = "*"            # install-tl / tlmgr / TeX Live helper scripts
-librsvg = "*"         # rsvg-convert: converts figures/*.svg to PDF
-fontconfig = "*"
-font-ttf-dejavu = "*" # generic sans/mono fallbacks for text in SVG figures
-curl = "*"
-make = "*"            # GNU Make builds the slides (see Makefile)
 
 [tasks.clean]
 cmd = "make clean"
@@ -35,9 +36,9 @@ depends-on = ["slides-make"]
 description = "Open the slides in your PDF viewer"
 
 [tasks.slides-watch]
-cmd = "bash latex/watch.sh"
+cmd = "make watch"
 depends-on = ["texlive-install"]
-description = "Rebuild the slides whenever sources change"
+description = "Rebuild the slides whenever sources change (inotifywait)"
 
 [tasks.texlive-install]
 cmd = "bash latex/install-texlive.sh"

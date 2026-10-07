@@ -21,24 +21,15 @@ pylatexenc = "*"      # runtime dependency of latexminted
 cmd = "make clean"
 description = "Remove build artifacts"
 
-[tasks.generate-figures]
-cmd = "make genfig"
-description = "Convert figures/*.svg to figures/*.pdf"
-
-[tasks.slides-make]
+[tasks.make]
 cmd = "make"
 depends-on = ["texlive-install"]
 description = "Build reinforcement-learning-legged-robots.pdf"
 
-[tasks.slides-open]
+[tasks.open]
 cmd = "xdg-open reinforcement-learning-legged-robots.pdf"
 depends-on = ["slides-make"]
 description = "Open the slides in your PDF viewer"
-
-[tasks.slides-watch]
-cmd = "make watch"
-depends-on = ["texlive-install"]
-description = "Rebuild the slides whenever sources change (inotifywait)"
 
 [tasks.texlive-install]
 cmd = "bash latex/install-texlive.sh"
@@ -47,3 +38,8 @@ description = "Bootstrap the project-scoped TeX Live (one-time, ~250 MB, under ~
 [tasks.texlive-uninstall]
 cmd = "bash latex/uninstall-texlive.sh"
 description = "Remove the project-scoped TeX Live installation"
+
+[tasks.watch]
+cmd = "make watch"
+depends-on = ["texlive-install"]
+description = "Rebuild the slides whenever sources change (inotifywait)"

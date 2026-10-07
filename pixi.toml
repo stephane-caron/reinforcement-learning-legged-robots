@@ -10,7 +10,7 @@ python = "<3.14"
 curl = "*"
 font-ttf-dejavu = "*" # generic sans/mono fallbacks for text in SVG figures
 fontconfig = "*"
-inotify-tools = "*"   # inotifywait: rebuild slides on source changes (slides-watch)
+inotify-tools = "*"   # inotifywait: rebuild slides on source changes
 librsvg = "*"         # rsvg-convert: converts figures/*.svg to PDF
 make = "*"            # GNU Make builds the slides (see Makefile)
 perl = "*"            # install-tl / tlmgr / TeX Live helper scripts
@@ -28,7 +28,7 @@ description = "Build reinforcement-learning-legged-robots.pdf"
 
 [tasks.open]
 cmd = "xdg-open reinforcement-learning-legged-robots.pdf"
-depends-on = ["slides-make"]
+depends-on = ["make"]
 description = "Open the slides in your PDF viewer"
 
 [tasks.texlive-install]

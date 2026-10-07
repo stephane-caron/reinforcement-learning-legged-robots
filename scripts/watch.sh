@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Rebuild the slides whenever a source file changes (polling, no inotify
-# needed). Run with: `pixi run watch`
+# needed). Run with: `pixi run slides-watch`
 
 set -uo pipefail
 

@@ -1,0 +1,46 @@
+[workspace]
+name = "reinforcement-learning-legged-robots"
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+# Python < 3.14: the latexminted helper shipped with TeX Live (required by
+# minted v3) is incompatible with the argparse changes of Python 3.14.
+python = "<3.14"
+pygments = "*"        # runtime dependency of latexminted
+pylatexenc = "*"      # runtime dependency of latexminted
+perl = "*"            # install-tl / tlmgr / TeX Live helper scripts
+librsvg = "*"         # rsvg-convert: converts figures/*.svg to PDF
+fontconfig = "*"
+font-ttf-dejavu = "*" # generic sans/mono fallbacks for text in SVG figures
+curl = "*"
+
+[tasks.clean]
+cmd = "rm -f reinforcement-learning-legged-robots.pdf reinforcement-learning-legged-robots.{aux,bbl,bcf,blg,log,nav,out,run.xml,snm,toc,vrb} && rm -rf _minted genfig"
+description = "Remove build artifacts"
+
+[tasks.genfig]
+cmd = "bash scripts/make-slides.sh --genfig-only"
+description = "Convert figures/*.svg to genfig/*.pdf"
+
+[tasks.slides]
+cmd = "bash scripts/make-slides.sh"
+depends-on = ["texlive-install"]
+description = "Build reinforcement-learning-legged-robots.pdf"
+
+[tasks.texlive-install]
+cmd = "bash scripts/install-texlive.sh"
+description = "Bootstrap the project-scoped TeX Live (one-time, ~250 MB, under ~/.local/share/texlive-projects/)"
+
+[tasks.texlive-uninstall]
+cmd = "bash scripts/uninstall-texlive.sh"
+description = "Remove the project-scoped TeX Live installation"
+
+[tasks.view]
+cmd = "xdg-open reinforcement-learning-legged-robots.pdf"
+description = "Open the slides in your PDF viewer"
+
+[tasks.watch]
+cmd = "bash scripts/watch.sh"
+depends-on = ["texlive-install"]
+description = "Rebuild the slides whenever sources change"

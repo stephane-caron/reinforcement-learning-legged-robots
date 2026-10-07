@@ -23,10 +23,20 @@ description = "Remove build artifacts"
 cmd = "bash scripts/make-slides.sh --genfig-only"
 description = "Convert figures/*.svg to figures/*.pdf"
 
-[tasks.slides]
+[tasks.slides-make]
 cmd = "bash scripts/make-slides.sh"
 depends-on = ["texlive-install"]
 description = "Build reinforcement-learning-legged-robots.pdf"
+
+[tasks.slides-open]
+cmd = "xdg-open reinforcement-learning-legged-robots.pdf"
+depends-on = ["slides-make"]
+description = "Open the slides in your PDF viewer"
+
+[tasks.slides-watch]
+cmd = "bash scripts/watch.sh"
+depends-on = ["texlive-install"]
+description = "Rebuild the slides whenever sources change"
 
 [tasks.texlive-install]
 cmd = "bash scripts/install-texlive.sh"
@@ -35,12 +45,3 @@ description = "Bootstrap the project-scoped TeX Live (one-time, ~250 MB, under ~
 [tasks.texlive-uninstall]
 cmd = "bash scripts/uninstall-texlive.sh"
 description = "Remove the project-scoped TeX Live installation"
-
-[tasks.view]
-cmd = "xdg-open reinforcement-learning-legged-robots.pdf"
-description = "Open the slides in your PDF viewer"
-
-[tasks.watch]
-cmd = "bash scripts/watch.sh"
-depends-on = ["texlive-install"]
-description = "Rebuild the slides whenever sources change"
